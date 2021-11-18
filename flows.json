@@ -1,0 +1,552 @@
+[
+    {
+        "id": "b3aef151c8c31488",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6f1913215c6a798f",
+        "type": "serial in",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "serial": "e9fc4f340d60af62",
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "56abee96905cab94",
+                "f832e92869c646b4"
+            ]
+        ]
+    },
+    {
+        "id": "56abee96905cab94",
+        "type": "mqtt out",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "topic": "PS/medidor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "7644243e96cfd368",
+        "x": 670,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "86e8cd1bd9c737d4",
+        "type": "mqtt in",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "topic": "PS/medidor",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "7644243e96cfd368",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 870,
+        "y": 420,
+        "wires": [
+            [
+                "e7009e3f8e31063c"
+            ]
+        ]
+    },
+    {
+        "id": "f832e92869c646b4",
+        "type": "json",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 650,
+        "y": 260,
+        "wires": [
+            [
+                "f210bd5d31069932",
+                "fdb3105e190121b4",
+                "426d4546f4cae575"
+            ]
+        ]
+    },
+    {
+        "id": "1731561a5a82fe27",
+        "type": "ui_gauge",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "group": "7a65556d892a373c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "PH",
+        "label": "",
+        "format": "{{value}}",
+        "min": "1",
+        "max": "14",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "7",
+        "seg2": "",
+        "className": "",
+        "x": 1110,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "779a2d9f40072285",
+        "type": "debug",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f210bd5d31069932",
+        "type": "change",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[\"PH\"]",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 200,
+        "wires": [
+            [
+                "1731561a5a82fe27"
+            ]
+        ]
+    },
+    {
+        "id": "fdb3105e190121b4",
+        "type": "change",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[\"Temperatura\"]",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 260,
+        "wires": [
+            [
+                "b23dff4af1ac38e1"
+            ]
+        ]
+    },
+    {
+        "id": "426d4546f4cae575",
+        "type": "change",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[\"Turbidez\"]",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 320,
+        "wires": [
+            [
+                "c93fcca412cff178"
+            ]
+        ]
+    },
+    {
+        "id": "b23dff4af1ac38e1",
+        "type": "ui_gauge",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "group": "7a65556d892a373c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1130,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c93fcca412cff178",
+        "type": "ui_gauge",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "group": "7a65556d892a373c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Turbidez",
+        "label": "Lux",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1120,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e7009e3f8e31063c",
+        "type": "json",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 1030,
+        "y": 420,
+        "wires": [
+            [
+                "779a2d9f40072285"
+            ]
+        ]
+    },
+    {
+        "id": "18af9b761c54c37d",
+        "type": "serial out",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "serial": "e9fc4f340d60af62",
+        "x": 1010,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "5f61c8207ac0b282",
+        "type": "mqtt in",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "topic": "PS/medidor",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "7644243e96cfd368",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 670,
+        "y": 560,
+        "wires": [
+            [
+                "bfdbb9a7b0ec968f"
+            ]
+        ]
+    },
+    {
+        "id": "ef7dd8421be7333d",
+        "type": "twitter out",
+        "z": "b3aef151c8c31488",
+        "d": true,
+        "twitter": "",
+        "name": "Tweet",
+        "x": 970,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "12d30c280723bd04",
+        "type": "serial in",
+        "z": "b3aef151c8c31488",
+        "d": true,
+        "name": "",
+        "serial": "e9fc4f340d60af62",
+        "x": 470,
+        "y": 660,
+        "wires": [
+            [
+                "6cd98f644226392b"
+            ]
+        ]
+    },
+    {
+        "id": "6cd98f644226392b",
+        "type": "json",
+        "z": "b3aef151c8c31488",
+        "d": true,
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 630,
+        "y": 660,
+        "wires": [
+            [
+                "85639f2ffa12381e"
+            ]
+        ]
+    },
+    {
+        "id": "85639f2ffa12381e",
+        "type": "change",
+        "z": "b3aef151c8c31488",
+        "d": true,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[\"Status\"]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 660,
+        "wires": [
+            [
+                "ef7dd8421be7333d"
+            ]
+        ]
+    },
+    {
+        "id": "bfdbb9a7b0ec968f",
+        "type": "json",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 850,
+        "y": 560,
+        "wires": [
+            [
+                "18af9b761c54c37d"
+            ]
+        ]
+    },
+    {
+        "id": "5e98a36373a70250",
+        "type": "mysql",
+        "z": "b3aef151c8c31488",
+        "mydb": "30a30076aab60375",
+        "name": "",
+        "x": 910,
+        "y": 780,
+        "wires": [
+            [
+                "9f24e765d9adebee"
+            ]
+        ]
+    },
+    {
+        "id": "d839cfd63f6593b0",
+        "type": "function",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "func": "var ph = msg.payload.PH;\nvar temp = msg.payload.Temperatura;\nvar turb = msg.payload.Turbidez;\n\ninsert = \"insert into ps.dados (`ph`,`temperatura`,`turbidez`) values ('\" + ph + \"', '\" + temp + \"', '\" + turb + \"'); \";\nmsg.topic = insert;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 780,
+        "wires": [
+            [
+                "5e98a36373a70250"
+            ]
+        ]
+    },
+    {
+        "id": "b4ac6c7914ef3536",
+        "type": "serial in",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "serial": "e9fc4f340d60af62",
+        "x": 450,
+        "y": 780,
+        "wires": [
+            [
+                "bd20a5c0f78d7a01"
+            ]
+        ]
+    },
+    {
+        "id": "bd20a5c0f78d7a01",
+        "type": "json",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 590,
+        "y": 780,
+        "wires": [
+            [
+                "d839cfd63f6593b0"
+            ]
+        ]
+    },
+    {
+        "id": "9f24e765d9adebee",
+        "type": "debug",
+        "z": "b3aef151c8c31488",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "e9fc4f340d60af62",
+        "type": "serial-port",
+        "serialport": "COM2",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "1000"
+    },
+    {
+        "id": "7644243e96cfd368",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.mqttdashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "Bem-vindo",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "7a65556d892a373c",
+        "type": "ui_group",
+        "name": "DASHBOARD",
+        "tab": "4b701a2f53486552",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "30a30076aab60375",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "localhost",
+        "port": "3306",
+        "db": "ps",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "4b701a2f53486552",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
